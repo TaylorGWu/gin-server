@@ -19,9 +19,6 @@ func (gateway *Gateway) Run() {
 	gateway.router = gin.New()
 	fmt.Print(len(gateway.Fronts))
 	for _, front := range gateway.Fronts {
-		if front == nil {
-			continue
-		}
 		path := front.BindPath()
 		method := front.BindMethod()
 

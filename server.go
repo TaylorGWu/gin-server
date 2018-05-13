@@ -2,7 +2,6 @@ package main
 
 import (
 	"gin-server/gateway"
-	"gin-server/front"
 	"gin-server/protocol"
 	"github.com/gin-gonic/gin"
 )
@@ -20,15 +19,13 @@ func (front Front1) BindPath() (string) {
 }
 
 func (front Front1) Serve(context *gin.Context) {
+	context.Writer.Write([]byte("hello,world"))
 
 }
 
 func main() {
-	fronts := make([]front.FrontInterface, 1)
 	front1 := Front1{}
-
 	myGateway := gateway.Gateway{
-		Fronts: fronts,
 	}
 	myGateway.AddFronts(front1)
 	myGateway.Run()
